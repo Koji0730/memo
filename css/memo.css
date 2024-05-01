@@ -1,0 +1,15 @@
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.a{
+    margin: 10px;
+    width: 300px;
+    background-color: antiquewhite;
+}
+
+#new{
+    border: 1px solid rgb(188, 236, 15);
+}

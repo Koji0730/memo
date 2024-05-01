@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo</title>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="/kadai/css/memo.css">
+</head>
+<body>
+    
+    <button id="add">追加</button>
+
+    <main id="main">
+    
+    </main>
+
+<script>
+
+    let c = 0;
+    $("#add").on("click",function(){
+        c++;
+        $("#main>div").removeAttr("id","new");
+        const html = `<div id="new" class="a">${c}</div>`
+        $("#main").append(html);
+    });
+
+
+
+</script>
+
+
+</body>
+
+</html>
