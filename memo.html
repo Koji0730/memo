@@ -5,27 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memo</title>
     <script src="js/jquery-2.1.3.min.js"></script>
-    <link rel="stylesheet" href="/kadai/css/memo.css">
+    <link rel="stylesheet" href="./css/memo.css">
 </head>
-<body>
-    
-    <button id="add">追加</button>
 
+    <div>
+        <div id="button">
+            <button id="save">保存</button>
+            <button id="delete">削除</button>
+        </div>
+    </div>  
+
+    <div class="element">
+        <div class="contents">CONTENSTS</div>
+        <div class="priority">PRIORITY</div>
+    </div>
+
+    <div class="textbox" >
+        <input type="text" id="text" class="memo">
+        <select name="priority" class="priority" id="priority">
+            <option value=""></option>
+            <option value="1">Urgent</option>
+            <option value="2">Important</option>
+            <option value="3">Normal</option>
+        </select>
+    </div>
+
+    <table id="list"></table>
+    
     <main id="main">
     
     </main>
 
+
+
 <script>
 
-    let c = 0;
-    $("#add").on("click",function(){
-        c++;
-        $("#main>div").removeAttr("id","new");
-        const html = `<div id="new" class="a">${c}</div>`
-        $("#main").append(html);
+    $("#save").on("click",function(){
+        const text = $("#text").val();
+        const select = $("#priority").val();
+        localStorage.setItem(text,select);
+        const txt = $('[name=priority] option:selected').text();
+        const html = '<tr><th>'+text+'</th><td>'+txt+'</td></tr>';
+        $("#list").append(html);
+        console.dir($("#priority").val(select));
+    }); 
+
+
+    $("#delete").on("click",function(){
+        localStorage.clear();
+        $("#list").empty();
     });
 
-
+    for(let i=0; i<localStorage.length; i++){
+    const text   = localStorage.key(i);
+    const select = localStorage.getItem(text);
+    const txt = $('[name=priority] option:selected').text();
+    const html = '<tr><th>'+text+'</th><td>'+txt+'</td></tr>';
+    $("#list").append(html);
+}
 
 </script>
 
